@@ -1,11 +1,9 @@
 import React from 'react';
-import {useSelector} from 'react-redux'
 
 function Btn(props)
 {
-  const txt = useSelector(state => state.acting);
-  console.log(txt);
-  return (
+//  const txt = useSelector(state => state.acting);
+   return (
     <button onClick={props.click}>Hello</button>
   )
 }
