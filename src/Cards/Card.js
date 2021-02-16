@@ -28,11 +28,7 @@ function Card (props)
   }
 
   return (
-    <div style={{display: 'inline-block',
-    backgroundColor: 'rgba(230,246,254,1)',
-    borderBottom: '3px solid rgba(159,217,246,1)',
-      margin: '10px'
-    }}>
+    <div className='container'>
       <div className='Card'>
 
         <div className='header'>

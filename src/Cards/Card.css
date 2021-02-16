@@ -1,5 +1,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Jura&display=swap');
 
+.container {
+  display:inline-block;
+  background-color: rgba(230,246,254,1);
+  border-bottom: 3px solid rgba(159,217,246,1);
+  margin: 10px;
+}
+
 .Card {
   width: 200px;
   height: 300px;
