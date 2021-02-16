@@ -1,0 +1,28 @@
+@import url('https://fonts.googleapis.com/css2?family=Jura&display=swap');
+
+.Card {
+  width: 200px;
+  height: 300px;
+  display: grid;
+  grid-template-rows: auto;
+  padding: 10px;
+  box-shadow: 6px 6px rgba(60,133,168,1);
+  background-color: rgba(230,246,254,1);
+  border-bottom: 3px solid rgba(159,217,246,1);
+}
+
+.header {
+  display: flex;
+  justify-content: space-around;
+  flex-direction: row;
+  align-items: center;
+}
+
+p {
+  font-family: 'Jura', sans-serif;
+}
+
+h2 {
+  font-family: 'Jura', sans-serif;
+  color: blue;
+}

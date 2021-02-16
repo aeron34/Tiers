@@ -1,0 +1,27 @@
+.btn {
+  color: red;
+}
+
+body {
+  padding-top: 10vh;
+
+}
+
+.big {
+  width:100%;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  flex-wrap: wrap;
+}
+
+.canvas {
+  margin-bottom: 10%;
+}
+
+@media screen and (max-width: 500px)
+{
+  .btn {
+    color: blue;
+  }
+}

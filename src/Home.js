@@ -1,26 +1,19 @@
 
 import ReactDOM, { Component } from 'react';
+import React from 'react';
 import Btn from './btn'
-import './App.css'
+import './Home.css'
+import Card from './Cards/Card'
 import Chart from 'chart.js'
 
-class App extends Component {
+class Home extends Component {
 
   state = {
-      inn: "",
-      style:{
-        textAlign: "center",
-        color: "red",
-        fontSize: "20px"
-      },
-      arr: [
-        {name: "nomu", key:"asoid2", text:"txt"},
-        {name: "nmu", key:"asnid2", text:"t3t"}
-      ]
+      inn: ""
   }
+
   componentDidMount()
   {
-    console.log("good");
     const canvas = this.refs.canvas
     const ctx = canvas.getContext("2d");
 
@@ -48,14 +41,35 @@ class App extends Component {
 
   render()
   {
-    const {inn}= this.state;
+    console.log(this.props.name);
+
+    let card_list = [];
+
+    for(let i = 0; i < 4; i++)
+    {
+      card_list.push(<Card key={`fal${i}`}/>);
+    }
+
+    /*<div style={{display: 'inline-block'}}>
+      <Btn />
+    </div>*/
 
     return (
-      <div style={{width: '400px', height: '400px'}}>
-        <canvas ref="canvas" width="10" height="10"></canvas>
-    </div>
-  );
+      <div className="big">
+
+        <div className="canvas"style={{width: '400px', height: '400px'}}>
+          <canvas ref="canvas" width="10" height="10"></canvas>
+        </div>
+
+        <div style={{width: 'auto'}}>
+          {card_list.map(card => {
+            return card;
+          })}
+        </div>
+
+      </div>
+    );
   }
 }
 
-export default App;
+export default Home;
