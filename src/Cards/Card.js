@@ -1,6 +1,6 @@
-import React from 'react'
+import React, {Suspense, lazy} from 'react'
 import './Card.css'
-import logo from './images/falco.png'
+
 function Card (props)
 {
   /*This is the stats
@@ -8,14 +8,17 @@ function Card (props)
   the height, weight,
   tier, and origin
   franchise */
+
+  let name = props.name;
+
   let stats = {
     "Tier": "S",
     "Game": "StarFox",
     "Weight": "180lbs",
     "Height": "5'2 ft",
   }
-
   let stats_jsx = [];
+
 
   for (var prop in stats) {
     stats_jsx.push(
@@ -27,13 +30,22 @@ function Card (props)
     )
   }
 
+  console.log(props.rgb);
   return (
     <div className='container'>
-      <div className='Card'>
+
+      <div className='Card'
+    //  `rgba(${props.rgb[0]-170},${props.rgb[1]-113},${props.rgb[2]-86},1)`
+      style={{  boxShadow: `6px 6px rgba(${props.rgb[0]-170},${props.rgb[1]-113},${props.rgb[2]-86},1)`,
+        backgroundColor: `rgba(${props.rgb[0]},${props.rgb[1]},${props.rgb[2]},1)`,
+        borderBottom: `3px solid rgba(${props.rgb[0]-71},${props.rgb[1]-29},${props.rgb[2]-8},1)`
+      }}>
 
         <div className='header'>
-          <img src={logo} style={{width: '24px', height:'24px'}}/>
-          <h2>FALCO</h2>
+          <img src={`http://localhost:5000/${name}.png`} style={{width: '24px', height:'24px'}}/>
+          <h2 style={{
+            color: `rgba(${props.rgb[0]-255},${props.rgb[1]-255},${props.rgb[2]},1)`
+          }}>{name.toUpperCase()}</h2>
         </div>
 
         {stats_jsx.map(obj => obj)}

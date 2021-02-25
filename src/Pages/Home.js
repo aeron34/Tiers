@@ -1,9 +1,9 @@
 
 import ReactDOM, { Component } from 'react';
 import React from 'react';
-import Btn from './btn'
+import Btn from '../btn'
 import './Home.css'
-import Card from './Cards/Card'
+import Card from '../Cards/Card'
 import Chart from 'chart.js'
 
 class Home extends Component {
@@ -36,23 +36,35 @@ class Home extends Component {
           ]
       }
     });
-
+    document.title = "woo"
   }
 
   render()
   {
-    console.log(this.props.name);
 
     let card_list = [];
 
-    for(let i = 0; i < 4; i++)
-    {
-      card_list.push(<Card key={`fal${i}`}/>);
-    }
+    let names = ["falco", "fox", "falcon",
+    "ness", "luigi"];
 
-    /*<div style={{display: 'inline-block'}}>
-      <Btn />
-    </div>*/
+    let colors = [
+      [230,246,254],
+      [215,141,15],
+      [151,25,182,1],
+      [236,39,20],
+      [4,199,56,1] //luigi
+
+    ]
+
+    for(let i = 0; i < 6; i++)
+    {
+      let s = Math.floor(Math.random()*5);
+      card_list.push(
+        <Card key={`fal${i}`}
+          name={names[s]}
+          rgb={colors[s]}
+        />);
+    }
 
     return (
       <div className="big">
@@ -61,7 +73,7 @@ class Home extends Component {
           <canvas ref="canvas" width="10" height="10"></canvas>
         </div>
 
-        <div style={{width: 'auto'}}>
+        <div className="Card_Box">
           {card_list.map(card => {
             return card;
           })}
