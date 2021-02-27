@@ -11,19 +11,15 @@ function Card (props)
 
   let name = props.name;
 
-  let stats = {
-    "Tier": "S",
-    "Game": "StarFox",
-    "Weight": "180lbs",
-    "Height": "5'2 ft",
-  }
-  let stats_jsx = [];
+  let stats = props.stats;
+  delete stats.Color;
 
+  let stats_jsx = [];
 
   for (var prop in stats) {
     stats_jsx.push(
       (<div>
-        <p>
+        <p style={{cursor: "default"}}>
           {prop}: <span style={{fontWeight: 'bold'}}>{stats[`${prop}`]}</span>
         </p>
       </div>)

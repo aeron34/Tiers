@@ -9,7 +9,8 @@ import Chart from 'chart.js'
 class Home extends Component {
 
   state = {
-      inn: ""
+      inn: "",
+      card_list: []
   }
 
   componentDidMount()
@@ -37,13 +38,27 @@ class Home extends Component {
       }
     });
     document.title = "woo"
+
+    this.loadCards();
   }
+
+  loadCards = () => {
+    fetch('http://localhost:5000/data')
+    .then(a => a.json()).then(
+      a => {console.log(a);
+      this.setState({
+        card_list: a
+      })}).catch(e =>{
+        console.log(e);
+      })
+  }
+
 
   render()
   {
 
-    let card_list = [];
-
+    let {card_list} = this.state;
+    let arr = [];
     let names = ["falco", "fox", "falcon",
     "ness", "luigi"];
 
@@ -53,9 +68,8 @@ class Home extends Component {
       [151,25,182,1],
       [236,39,20],
       [4,199,56,1] //luigi
-
     ]
-
+/*
     for(let i = 0; i < 6; i++)
     {
       let s = Math.floor(Math.random()*5);
@@ -64,6 +78,15 @@ class Home extends Component {
           name={names[s]}
           rgb={colors[s]}
         />);
+    }
+*/
+    for (var obj in card_list) {
+      arr.push(
+        <Card key={obj}
+          name={obj}
+          rgb={card_list[obj].Color}
+          stats={card_list[obj]}
+        />)
     }
 
     return (
@@ -74,9 +97,7 @@ class Home extends Component {
         </div>
 
         <div className="Card_Box">
-          {card_list.map(card => {
-            return card;
-          })}
+          {arr.map(a => a)}
         </div>
 
       </div>
