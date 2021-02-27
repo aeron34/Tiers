@@ -11,8 +11,11 @@ function Card (props)
 
   let name = props.name;
 
-  let stats = props.stats;
+  let stats = {};
+  Object.assign(stats, props.stats);
   delete stats.Color;
+  delete stats.name;
+  delete stats.wins;
 
   let stats_jsx = [];
 

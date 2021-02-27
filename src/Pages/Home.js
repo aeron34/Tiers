@@ -15,6 +15,30 @@ class Home extends Component {
 
   componentDidMount()
   {
+    document.title = "woo"
+    this.loadCards();
+  }
+
+  compare(a, b)
+  {
+      return b.wins - a.wins;
+  }
+
+  createGraph = () => {
+
+    let card_list = {};
+    Object.assign(card_list, this.state.card_list);
+    let list = [], i = 0;
+    console.log(card_list);
+
+    for (var prop in card_list) {
+        list.push(card_list[prop]);
+        list[i]["name"] = prop
+        i++;
+    }
+
+    list = list.sort(this.compare);
+    list.splice(4);
     const canvas = this.refs.canvas
     const ctx = canvas.getContext("2d");
 
@@ -22,33 +46,23 @@ class Home extends Component {
       type: 'doughnut',
       data: {
           datasets: [{
-              data: [10, 20, 30],
-              backgroundColor: [
-                  'rgba(57,187,70,1)',
-                  'rgba(115,240,17,1)',
-                  'rgba(232,9,9,1)'
-              ]
+              data: list.map(a => a.wins),
+              backgroundColor: list.map(a => `rgba(${a.Color[0]}, ${a.Color[1]}, ${a.Color[2]})`)
           }],
           // These labels appear in the legend and in the tooltips when hovering different arcs
-          labels: [
-              'Red',
-              'Yellow',
-              'Blue'
-          ]
+          labels: list.map(a => a.name)
       }
     });
-    document.title = "woo"
-
-    this.loadCards();
   }
 
   loadCards = () => {
     fetch('http://localhost:5000/data')
     .then(a => a.json()).then(
-      a => {console.log(a);
-      this.setState({
-        card_list: a
-      })}).catch(e =>{
+      a => {
+        this.setState({
+          card_list: a
+        }, this.createGraph)
+      }).catch(e =>{
         console.log(e);
       })
   }
@@ -57,35 +71,25 @@ class Home extends Component {
   render()
   {
 
-    let {card_list} = this.state;
-    let arr = [];
-    let names = ["falco", "fox", "falcon",
-    "ness", "luigi"];
+    let card_list = {};
+    Object.assign(card_list, this.state.card_list);
+    let arr = [], list = [], a = 0;
 
-    let colors = [
-      [230,246,254],
-      [215,141,15],
-      [151,25,182,1],
-      [236,39,20],
-      [4,199,56,1] //luigi
-    ]
-/*
-    for(let i = 0; i < 6; i++)
-    {
-      let s = Math.floor(Math.random()*5);
-      card_list.push(
-        <Card key={`fal${i}`}
-          name={names[s]}
-          rgb={colors[s]}
-        />);
+    for (var prop in card_list) {
+        list.push(card_list[prop]);
+        list[a]["name"] = prop
+        a++
     }
-*/
-    for (var obj in card_list) {
+
+    list.sort(this.compare);
+    console.log(list);
+    for (let i = 0; i < list.length; i++)
+    {
       arr.push(
-        <Card key={obj}
-          name={obj}
-          rgb={card_list[obj].Color}
-          stats={card_list[obj]}
+        <Card key={`${list[i]}+${i}`}
+          name={list[i].name}
+          rgb={list[i].Color}
+          stats={list[i]}
         />)
     }
 
@@ -102,6 +106,7 @@ class Home extends Component {
 
       </div>
     );
+
   }
 }
 

@@ -12,7 +12,8 @@ let characters = {
     "Game": "StarFox",
     "Weight": "180lbs",
     "Height": "5'2 ft",
-    "Color":  [230,246,254]
+    "Color":  [230,246,254],
+    "wins": 42
   },
 
   "luigi": {
@@ -20,7 +21,8 @@ let characters = {
     "Game": "Mario Brothers",
     "Weight": "150lbs",
     "Height": "6'0 ft",
-    "Color":[4,199,56,1]
+    "Color":[4,199,56],
+    "wins": 12
   },
 
   "fox": {
@@ -28,7 +30,8 @@ let characters = {
     "Game": "StarFox",
     "Weight": "182.5lbs",
     "Height": "5'1 ft",
-    Color: [215,141,15]
+    Color: [215,141,15],
+    "wins": 58
   },
 
   "ness": {
@@ -36,7 +39,9 @@ let characters = {
     "Game": "Mother",
     "Weight": "125lbs",
     "Height": "4'7 ft",
-    Color: [227,54,104]
+    Color: [227,54,104],
+    "wins": 20
+
   },
 
   "falcon": {
@@ -44,7 +49,9 @@ let characters = {
     "Game": "Mother",
     "Weight": "190lbs",
     "Height": "6'2 ft",
-    Color: [151,25,182,1]
+    Color: [151,25,182],
+    "wins": 45
+
   },
 
   "mario": {
@@ -52,20 +59,11 @@ let characters = {
     "Game": "Mario Brothers",
     "Weight": "152lbs",
     "Height": "5'8 ft",
-    "Color": [236,39,20]
+    "Color": [236,39,20],
+    "wins": 32
+
   }
 }
-
-let names = ["falco", "fox", "falcon",
-"ness", "luigi"];
-
-let colors = [
-  [230,246,254],
-  [215,141,15],
-  [151,25,182,1],
-  [236,39,20],
-  [4,199,56,1] //luigi
-]
 
 app.get('/data/:name', (req, res) => {
   console.log(req.params.name);
