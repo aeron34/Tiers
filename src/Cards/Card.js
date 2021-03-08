@@ -47,7 +47,7 @@ function Card (props)
       }}>
 
         <div className='header'>
-          <img src={`http://localhost:5000/${name}.png`} style={{width: '24px', height:'24px'}}/>
+          <img src={`https://infinite-journey-69877.herokuapp.com/${name}.png`} style={{width: '24px', height:'24px'}}/>
           <h2 style={{
             color: `rgba(${props.rgb[0]-255},${props.rgb[1]-255},${props.rgb[2]},1)`
           }}>{name.toUpperCase()}</h2>

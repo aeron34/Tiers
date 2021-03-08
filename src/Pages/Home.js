@@ -65,7 +65,7 @@ class Home extends Component {
   }
 
   loadCards = () => {
-    fetch('http://localhost:5000/data')
+    fetch('https://infinite-journey-69877.herokuapp.com/data')
     .then(a => a.json()).then(
       a => {
         this.setState({

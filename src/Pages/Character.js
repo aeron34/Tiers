@@ -11,7 +11,7 @@ function Character(props)
   const [color, setColor] = useState({});
 
   useEffect(() => {
-    fetch(`http://localhost:5000/data/${char}`).then(a => a.json())
+    fetch(`https://infinite-journey-69877.herokuapp.com/data/${char}`).then(a => a.json())
     .then(object => {
       for (var prop in object) {
         if (object.hasOwnProperty(prop)) {
@@ -31,7 +31,7 @@ function Character(props)
   return (
     <>
       <div style={color}className="main_box">
-        <img src={`http://localhost:5000/${char}.png`} style={{width: '24px', height:'24px'}}/>
+        <img src={`https://infinite-journey-69877.herokuapp.com/${char}.png`} style={{width: '24px', height:'24px'}}/>
         <h2 className="h2"style={{margin: mrgn}}>{char.toUpperCase()}</h2>
         {data.map(a => {
           if(a[0] != 'color')
