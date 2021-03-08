@@ -1,10 +1,11 @@
 
 import ReactDOM, { Component } from 'react';
 import React from 'react';
-import Btn from '../btn'
+import Modal from '../modal'
 import './Home.css'
 import Card from '../Cards/Card'
 import Chart from 'chart.js'
+import {CreateCardArray} from './HomeFunctions'
 
 class Home extends Component {
 
@@ -51,6 +52,13 @@ class Home extends Component {
           }],
           // These labels appear in the legend and in the tooltips when hovering different arcs
           labels: list.map(a => a.name)
+      },
+      options: {
+        title: {
+          display: true,
+          fontSize: 24,
+          text: 'Wins Among Top 4 Characters'
+        }
       }
     });
   }
@@ -73,32 +81,41 @@ class Home extends Component {
 
     let card_list = {};
     Object.assign(card_list, this.state.card_list);
-    let arr = [], list = [], a = 0;
+    let arr = CreateCardArray(card_list, this.compare);
 
-    for (var prop in card_list) {
-        list.push(card_list[prop]);
-        list[a]["name"] = prop
-        a++
-    }
+    let demo = [['EVO', '4/25/2021'], ['HyperX', '3/30/2021'],
+    ['Esporta', '6/21/2021'], ['LAX', '5/23/2021'], ['Nevodo', '4/5/2021']];
 
-    list.sort(this.compare);
-    console.log(list);
-    for (let i = 0; i < list.length; i++)
-    {
-      arr.push(
-        <Card key={`${list[i]}+${i}`}
-          name={list[i].name}
-          rgb={list[i].Color}
-          stats={list[i]}
-        />)
-    }
-
+    let modal = (<Modal>
+          <div>Ohhh</div>
+        </Modal>)
     return (
       <div className="big">
 
+
+        <h2 id="upcoming"style={{margin: "50px"}}> UPCOMING TOURNAMENTS </h2>
+
+        <div className="events">
+          {demo.map(a=>{
+            return (<div className="events__event">
+              <h2>{a[0]}</h2>
+              <p style={{fontWeight: "bold"}}>{a[1]}</p>
+              <p style={{width: "80%"}}>Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+              sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat</p>
+            </div>)
+          })}
+        </div>
+
+        {modal}
+        {/*This is the div section that holds the
+          chart*/}
         <div className="canvas"style={{width: '400px', height: '400px'}}>
           <canvas ref="canvas" width="10" height="10"></canvas>
         </div>
+
+
+        {/*This is the box that holds the Cards*/}
+        <h2 id="upcoming"style={{fontSize: "30px", margin: "50px"}}> TIER LIST </h2>
 
         <div className="Card_Box">
           {arr.map(a => a)}

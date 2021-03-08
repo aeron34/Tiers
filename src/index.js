@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import Home from './Pages/Home';
+import Character from './Pages/Character';
 import NotFound from './Pages/404';
 import {BrowserRouter as Router, Switch, Route} from "react-router-dom"
 
@@ -8,6 +9,7 @@ ReactDOM.render(
   <Router>
     <Switch>
       <Route path='/' exact component={Home}/>
+      <Route path='/character/:char' exact component={Character}/>
       <Route component={NotFound}/>
     </Switch>
   </Router>,document.getElementById('root'));

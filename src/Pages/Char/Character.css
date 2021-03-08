@@ -1,0 +1,12 @@
+.main_box {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  width:80%;
+  margin:auto;
+}
+
+
+.p, .h2 {
+  font-size: 30px;
+}

@@ -1,5 +1,6 @@
-import React, {Suspense, lazy} from 'react'
+import React from 'react'
 import './Card.css'
+import {NavLink} from 'react-router-dom'
 
 function Card (props)
 {
@@ -30,7 +31,12 @@ function Card (props)
   }
 
   console.log(props.rgb);
+
+  let nameurl = `/character/${name}`;
+
   return (
+    <NavLink style={{color: 'black', textDecoration: 'none'}}
+    to={nameurl}>
     <div className='container'>
 
       <div className='Card'
@@ -50,6 +56,7 @@ function Card (props)
         {stats_jsx.map(obj => obj)}
       </div>
     </div>
+    </NavLink>
   )
 }
 

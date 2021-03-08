@@ -1,0 +1,18 @@
+o Have navbar that moves to 
+
+	- Home
+
+	- Search Character
+
+	- My profile (using 
+	redux store to store
+	simple logged in
+	boolean)
+
+o Make the 3 pages listed above:
+
+	- Home (NOW)
+
+	- Search Character (NEXT [2])
+
+	- My profile 
