@@ -48,9 +48,10 @@ class Home extends Component {
       data: {
           datasets: [{
               data: list.map(a => a.wins),
-              backgroundColor: list.map(a => `rgba(${a.Color[0]}, ${a.Color[1]}, ${a.Color[2]})`)
+              backgroundColor: list.map(a => `rgba(${a.color[0]}, ${a.color[1]}, ${a.color[2]})`)
           }],
-          // These labels appear in the legend and in the tooltips when hovering different arcs
+          // These labels appear in the legend and in the tooltips when
+          //hovering different arcs
           labels: list.map(a => a.name)
       },
       options: {

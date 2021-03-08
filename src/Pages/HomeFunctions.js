@@ -18,7 +18,7 @@ export function CreateCardArray(card_list, compare)
     arr.push(
       <Card key={`${list[i]}+${i}`}
         name={list[i].name}
-        rgb={list[i].Color}
+        rgb={list[i].color}
         stats={list[i]}
       />)
   }

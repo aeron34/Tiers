@@ -17,7 +17,7 @@ function Character(props)
         if (object.hasOwnProperty(prop)) {
           setData(old_data => [...old_data, [prop, object[prop]]]);
         }
-        if(prop == 'Color')
+        if(prop == 'color')
         {
           setColor({padding: '20px',
           backgroundColor: `rgba(${object[prop][0]},${object[prop][1]},${object[prop][2]})`})
@@ -34,9 +34,9 @@ function Character(props)
         <img src={`http://localhost:5000/${char}.png`} style={{width: '24px', height:'24px'}}/>
         <h2 className="h2"style={{margin: mrgn}}>{char.toUpperCase()}</h2>
         {data.map(a => {
-          if(a[0] != 'Color')
+          if(a[0] != 'color')
           {
-            return <p className="p"style={{margin: mrgn}}>{a[0]}: {a[1]}</p>
+            return <p className="p"style={{margin: mrgn}}>{a[0].toUpperCase()}: {a[1]}</p>
           }
         })}
       </div>

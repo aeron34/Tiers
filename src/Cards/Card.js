@@ -14,7 +14,7 @@ function Card (props)
 
   let stats = {};
   Object.assign(stats, props.stats);
-  delete stats.Color;
+  delete stats.color;
   delete stats.name;
   delete stats.wins;
 
@@ -24,7 +24,7 @@ function Card (props)
     stats_jsx.push(
       (<div>
         <p style={{cursor: "default"}}>
-          {prop}: <span style={{fontWeight: 'bold'}}>{stats[`${prop}`]}</span>
+          {prop.toUpperCase()}: <span style={{fontWeight: 'bold'}}>{stats[`${prop}`]}</span>
         </p>
       </div>)
     )
