@@ -14,7 +14,7 @@ function Card (props)
 
   let stats = {};
   Object.assign(stats, props.stats);
-  delete stats.Color;
+  delete stats.color;
   delete stats.name;
   delete stats.wins;
 
@@ -24,13 +24,13 @@ function Card (props)
     stats_jsx.push(
       (<div>
         <p style={{cursor: "default"}}>
-          {prop}: <span style={{fontWeight: 'bold'}}>{stats[`${prop}`]}</span>
+          {prop.toUpperCase()}: <span style={{fontWeight: 'bold'}}>{stats[`${prop}`]}</span>
         </p>
       </div>)
     )
   }
-
-  console.log(props.rgb);
+  
+  console.log(props.stats.color);
 
   let nameurl = `/character/${name}`;
 
@@ -47,7 +47,7 @@ function Card (props)
       }}>
 
         <div className='header'>
-          <img src={`http://localhost:5000/${name}.png`} style={{width: '24px', height:'24px'}}/>
+          <img src={`https://infinite-journey-69877.herokuapp.com/${name}.png`} style={{width: '24px', height:'24px'}}/>
           <h2 style={{
             color: `rgba(${props.rgb[0]-255},${props.rgb[1]-255},${props.rgb[2]},1)`
           }}>{name.toUpperCase()}</h2>

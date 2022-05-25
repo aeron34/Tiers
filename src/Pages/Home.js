@@ -4,14 +4,19 @@ import React from 'react';
 import Modal from '../modal'
 import './Home.css'
 import Card from '../Cards/Card'
-import Chart from 'chart.js'
+import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
+import { Doughnut } from 'react-chartjs-2';
 import {CreateCardArray} from './HomeFunctions'
+
+ChartJS.register(ArcElement, Tooltip, Legend);
+
 
 class Home extends Component {
 
   state = {
       inn: "",
-      card_list: []
+      card_list: [],
+      dough: null,
   }
 
   componentDidMount()
@@ -40,31 +45,23 @@ class Home extends Component {
 
     list = list.sort(this.compare);
     list.splice(4);
-    const canvas = this.refs.canvas
-    const ctx = canvas.getContext("2d");
 
-    let mc = new Chart(ctx, {
-      type: 'doughnut',
-      data: {
+    this.setState({dough: <Doughnut data = {{
           datasets: [{
               data: list.map(a => a.wins),
-              backgroundColor: list.map(a => `rgba(${a.Color[0]}, ${a.Color[1]}, ${a.Color[2]})`)
+              backgroundColor: list.map(a => `rgba(${a.color[0]}, ${a.color[1]}, ${a.color[2]})`)
           }],
           // These labels appear in the legend and in the tooltips when hovering different arcs
           labels: list.map(a => a.name)
-      },
-      options: {
-        title: {
+      }} options={{title: {
           display: true,
           fontSize: 24,
           text: 'Wins Among Top 4 Characters'
-        }
-      }
-    });
+        }}}/>});
   }
 
   loadCards = () => {
-    fetch('http://localhost:5000/data')
+    fetch('https://infinite-journey-69877.herokuapp.com/data')
     .then(a => a.json()).then(
       a => {
         this.setState({
@@ -110,7 +107,7 @@ class Home extends Component {
         {/*This is the div section that holds the
           chart*/}
         <div className="canvas"style={{width: '400px', height: '400px'}}>
-          <canvas ref="canvas" width="10" height="10"></canvas>
+          {this.state.dough}
         </div>
 
 
