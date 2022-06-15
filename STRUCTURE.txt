@@ -1,3 +1,5 @@
+Boom
+
 o Have navbar that moves to 
 
 	- Home
